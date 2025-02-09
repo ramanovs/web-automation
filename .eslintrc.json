@@ -1,20 +1,25 @@
 {
   "env": {
     "browser": true,
+    "node": true,
     "es2021": true
   },
   "extends": [
-    "eslint:recommended",
-    "plugin:node/recommended"
+    "eslint:recommended"
   ],
   "parserOptions": {
-    "ecmaVersion": "latest",
+    "ecmaVersion": 12,
     "sourceType": "module"
   },
+  "globals": {
+    "$": "readonly",
+    "$$": "readonly",
+    "browser": "readonly"
+  },
   "rules": {
-    "indent": ["error", 2], 
-    "quotes": ["error", "double"], 
-    "semi": ["error", "always"], 
-    "no-console": "warn" 
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "quotes": ["error", "double"],
+    "semi": ["error", "always"]
   }
 }
