@@ -1,6 +1,10 @@
 import loginPage from "../locators/login-page.js";
 import { browser, expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
+import dotenv from 'dotenv';
+dotenv.config();
+
+
 
 export async function LoginPageSaucedemo(url) {
 
@@ -47,10 +51,20 @@ export async function LoginPageSaucedemo(url) {
 }
 
 
-export async function UserLogin() {
+export async function UserLogin(username) {
 
-    await (await loginPage.usernameField()).addValue('standard_user');
-    await (await loginPage.passwordField()).addValue('secret_sauce');
+    let credentials;
+  
+    switch (username) {
+        case "valid":
+            credentials = process.env.VALID_USERNAME;
+            break;
+        case "locked":
+            credentials = process.env.LOCKED_USERNAME;
+            break;
+    }
+
+    await (await loginPage.usernameField()).addValue(credentials);
+    await (await loginPage.passwordField()).addValue(process.env.PASSWORD);
     await (await loginPage.loginButton()).click();
-
 }

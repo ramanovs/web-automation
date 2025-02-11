@@ -7,6 +7,6 @@ Then('User success redirected to Homepage', async function () {
     
 });
 
-Then('User Choose Item', async function () {
-    await homePage.selectItemAndClickCartButton();
+Then('User add {string} to Cart', async function (item) {
+    await homePage.selectItemAndClickCartButton(item);
 })

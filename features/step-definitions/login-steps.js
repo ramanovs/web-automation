@@ -6,6 +6,6 @@ Given('Open URL {string}', async function (url) {
     await loginPage.LoginPageSaucedemo(url);
 });
 
-When('User Login using valid credentials', async function () {
-    await loginPage.UserLogin();
+When('User Login using {string} credentials', async function (username) {
+    await loginPage.UserLogin(username);
 });

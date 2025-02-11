@@ -5,9 +5,9 @@ Feature: Checkout Items in Saucedemo
   Scenario: Checkout Saucedemo
     
     Given Open URL "https://www.saucedemo.com/"
-    When User Login using valid credentials
+    When User Login using "valid" credentials
     Then User success redirected to Homepage 
-    And User Choose Item
+    And User add "BACKPACK" to Cart
     Then User Redirected to Shopping Cart Page
     Then User Redirected to Information Page
     Then User Redirected to Overview Page

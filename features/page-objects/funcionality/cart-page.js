@@ -1,6 +1,6 @@
 import cartPage from "../locators/cart-page.js";
 import { expectedWords } from "../../helpers/expect.js"
-import { expect as expectWdio } from "@wdio/globals";
+import { browser, expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
 
 

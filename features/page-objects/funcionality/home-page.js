@@ -2,10 +2,11 @@ import homePage from "../locators/home-page.js";
 import { expectedWords } from "../../helpers/expect.js"
 import { expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
+import dotenv from 'dotenv';
+dotenv.config();
 
 
 export async function checkHomepage() {
-
     expectWdio(await homePage.homePageHeader()).toBeDisplayed();
     expectChai(await (await homePage.homePageHeader()).getText()).to.equal('Swag Labs');
     expectWdio(await homePage.homePageTitle()).toBeDisplayed();
@@ -44,9 +45,21 @@ export async function checkHomepage() {
     expectChai(await (await homePage.homePageFooter()).getText()).to.equal('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
 }
 
-export async function selectItemAndClickCartButton() {
+export async function selectItemAndClickCartButton(item) {
+    
 
-    await (await homePage.addToCartButton(0)).click();
+   let selectedItem;
+
+    switch (item) {
+        case "BACKPACK":
+            selectedItem = process.env.BACKPACK;
+            break;
+        case "BIKELIGHT":
+            selectedItem = process.env.BIKELIGHT;
+            break;
+    }
+       
+    await (await homePage.addToCartButton(selectedItem)).click();
     await (await homePage.shoppingCartButton()).click();
 
 }
