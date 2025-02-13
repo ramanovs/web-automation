@@ -2,8 +2,7 @@ import overviewPage from "../locators/overview-page.js";
 import { expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
 import { expectedWords } from "../../helpers/expect.js"
-import { checkoutHelper } from "../../helpers/checkout.js"
-import { calculatePriceWithTax } from "../../helpers/calculation.js"
+import { checkoutHelper, calculatePriceWithTax } from "../../helpers/checkout.js"
 
 
 export async function checkOverviewPage() {
