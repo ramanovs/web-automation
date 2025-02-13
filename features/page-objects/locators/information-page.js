@@ -27,7 +27,7 @@ class InformationPage {
         return await $('[id="cancel"]');
     }
     async continueButton() {
-        return await $('[data-test="continue"]')
+        return await $('[data-test="continue"]');
     }
     async InformationPageFooter() {
         return await $('[data-test="footer-copy"]');

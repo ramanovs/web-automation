@@ -44,7 +44,7 @@ export async function LoginPageSaucedemo(url) {
     const passwordCredential = await passwordCredentialsElement.getText();
     const password = passwordCredential
         .replace('Password for all users:', '')
-        .split('\n')[1]
+        .split('\n')[1];
 
     expectChai(password).to.equal('secret_sauce');
 

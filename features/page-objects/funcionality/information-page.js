@@ -22,9 +22,9 @@ export async function checkYourInformationPage() {
     expectWdio(await informationPage.continueButton()).toBeDisplayed();
     expectWdio(await informationPage.continueButton()).toBeClickable();
     expectChai(await (await informationPage.InformationPageFooter()).getText()).to.equal('© 2025 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy');
-    await (await informationPage.firstNameField()).addValue('Rama')
-    await (await informationPage.lastNameField()).addValue('Saputra')
-    await (await informationPage.postalCodeField()).addValue('16426')
+    await (await informationPage.firstNameField()).addValue('Rama');
+    await (await informationPage.lastNameField()).addValue('Saputra');
+    await (await informationPage.postalCodeField()).addValue('16426');
     await (await informationPage.continueButton()).click();
 
 }

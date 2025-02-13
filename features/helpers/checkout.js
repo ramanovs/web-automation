@@ -1,6 +1,6 @@
 export const checkoutHelper = {
     selectedItem: null
-}
+};
 
 export function calculatePriceWithTax (itemPrice)  {
     const price = parseFloat(itemPrice.replace("$", ""));

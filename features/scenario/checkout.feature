@@ -11,7 +11,7 @@ Feature: Checkout Items in Saucedemo
     Given Open URL "https://www.saucedemo.com/"
     When User Login using "valid" credentials
     Then User success redirected to Homepage 
-    And User add "REDTSHIRT" to Cart
+    And User add "JACKET" to Cart
     Then User Redirected to Shopping Cart Page
     Then User Redirected to Information Page
     Then User Redirected to Overview Page
