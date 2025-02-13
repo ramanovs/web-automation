@@ -1,9 +1,8 @@
 import homePage from "../locators/home-page.js";
 import { expectedWords } from "../../helpers/expect.js"
+import { checkoutHelper } from "../../helpers/checkout.js"
 import { expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
-import dotenv from 'dotenv';
-dotenv.config();
 
 
 export async function checkHomepage() {
@@ -52,14 +51,29 @@ export async function selectItemAndClickCartButton(item) {
 
     switch (item) {
         case "BACKPACK":
-            selectedItem = process.env.BACKPACK;
+            selectedItem = 0
             break;
         case "BIKELIGHT":
-            selectedItem = process.env.BIKELIGHT;
+            selectedItem = 1
             break;
+        case "TSHIRT":
+            selectedItem = 2
+            break;
+        case "JACKET":
+            selectedItem = 3
+            break;  
+        case "ONESIE":
+            selectedItem = 4
+            break;
+        case "REDTSHIRT":
+            selectedItem = 5
+            break;             
     }
        
-    await (await homePage.addToCartButton(selectedItem)).click();
+
+    checkoutHelper.selectedItem = selectedItem;
+
+    await (await homePage.addToCartButton(checkoutHelper.selectedItem)).click();
     await (await homePage.shoppingCartButton()).click();
 
 }

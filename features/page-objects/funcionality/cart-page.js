@@ -1,6 +1,7 @@
 import cartPage from "../locators/cart-page.js";
 import { expectedWords } from "../../helpers/expect.js"
-import { browser, expect as expectWdio } from "@wdio/globals";
+import { checkoutHelper } from "../../helpers/checkout.js";
+import { expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
 
 
@@ -17,11 +18,11 @@ export async function checkShoppingCartPage() {
     expectWdio(await cartPage.cartDescLabel()).toBeDisplayed();
     expectChai(await (await cartPage.cartDescLabel()).getText()).to.equal('Description');
     expectWdio(await cartPage.itemName()).toBeDisplayed();
-    expectChai(await (await cartPage.itemName()).getText()).to.equal(expectedWords.expectedInventoryItemName[0]);
+    expectChai(await (await cartPage.itemName()).getText()).to.equal(expectedWords.expectedInventoryItemName[checkoutHelper.selectedItem]);
     expectWdio(await cartPage.itemDesc()).toBeDisplayed();
-    expectChai(await (await cartPage.itemDesc()).getText()).to.equal(expectedWords.expectedInventoryItemDesc[0]);
+    expectChai(await (await cartPage.itemDesc()).getText()).to.equal(expectedWords.expectedInventoryItemDesc[checkoutHelper.selectedItem]);
     expectWdio(await cartPage.itemPrice()).toBeDisplayed();
-    expectChai(await (await cartPage.itemPrice()).getText()).to.equal(expectedWords.expectedInventoryItemPrice[0]);
+    expectChai(await (await cartPage.itemPrice()).getText()).to.equal(expectedWords.expectedInventoryItemPrice[checkoutHelper.selectedItem]);
     expectWdio(await cartPage.removeItemButton()).toBeDisplayed();
     expectWdio(await cartPage.removeItemButton()).toBeClickable();
     expectChai(await (await cartPage.removeItemButton()).getText()).to.equal('Remove');

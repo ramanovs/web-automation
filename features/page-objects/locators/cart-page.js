@@ -27,7 +27,7 @@ class CartPage {
         return await $('[data-test="inventory-item-price"]');
     }
     async removeItemButton() {
-        return await $('[data-test="remove-sauce-labs-backpack"]');
+        return await $('[class="btn btn_secondary btn_small cart_button"]');
     }
     async continueShoppingButton() {
         return await $('[data-test="continue-shopping"]');

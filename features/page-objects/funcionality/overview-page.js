@@ -2,6 +2,7 @@ import overviewPage from "../locators/overview-page.js";
 import { expect as expectWdio } from "@wdio/globals";
 import { expect as expectChai } from "chai";
 import { expectedWords } from "../../helpers/expect.js"
+import { checkoutHelper } from "../../helpers/checkout.js"
 import { calculatePriceWithTax } from "../../helpers/calculation.js"
 
 
@@ -19,11 +20,11 @@ export async function checkOverviewPage() {
     expectWdio(await overviewPage.itemQuantity()).toBeDisplayed();
     expectChai(await (await overviewPage.itemQuantity()).getText()).to.equal('1');
     expectWdio(await overviewPage.itemName()).toBeDisplayed();
-    expectChai(await (await overviewPage.itemName()).getText()).to.equal(expectedWords.expectedInventoryItemName[0]);
+    expectChai(await (await overviewPage.itemName()).getText()).to.equal(expectedWords.expectedInventoryItemName[checkoutHelper.selectedItem]);
     expectWdio(await overviewPage.itemDesc()).toBeDisplayed();
-    expectChai(await (await overviewPage.itemDesc()).getText()).to.equal(expectedWords.expectedInventoryItemDesc[0]);
+    expectChai(await (await overviewPage.itemDesc()).getText()).to.equal(expectedWords.expectedInventoryItemDesc[checkoutHelper.selectedItem]);
     expectWdio(await overviewPage.itemPrice()).toBeDisplayed();
-    expectChai(await (await overviewPage.itemPrice()).getText()).to.equal(expectedWords.expectedInventoryItemPrice[0]);
+    expectChai(await (await overviewPage.itemPrice()).getText()).to.equal(expectedWords.expectedInventoryItemPrice[checkoutHelper.selectedItem]);
     expectWdio(await overviewPage.paymentInfoLabel()).toBeDisplayed();
     expectChai(await (await overviewPage.paymentInfoLabel()).getText()).to.equal('Payment Information:');
     expectWdio(await overviewPage.paymentInfoValue()).toBeDisplayed();
@@ -35,8 +36,8 @@ export async function checkOverviewPage() {
     expectWdio(await overviewPage.priceTotalLabel()).toBeDisplayed();
     expectChai(await (await overviewPage.priceTotalLabel()).getText()).to.equal('Price Total');
     expectWdio(await overviewPage.subTotalValue()).toBeDisplayed();
-    expectChai(await (await overviewPage.subTotalValue()).getText()).to.equal(`Item total: ${expectedWords.expectedInventoryItemPrice[0]}`);
-    const itemPrice = expectedWords.expectedInventoryItemPrice[0];
+    expectChai(await (await overviewPage.subTotalValue()).getText()).to.equal(`Item total: ${expectedWords.expectedInventoryItemPrice[checkoutHelper.selectedItem]}`);
+    const itemPrice = expectedWords.expectedInventoryItemPrice[checkoutHelper.selectedItem];
     const { tax, totalPrice } = calculatePriceWithTax(itemPrice);
     expectWdio(await overviewPage.taxValue()).toBeDisplayed();
     expectChai(await (await overviewPage.taxValue()).getText()).to.equal(`Tax: $${tax}`);
